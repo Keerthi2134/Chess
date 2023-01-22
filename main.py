@@ -11,28 +11,24 @@ class chessPiece:
 
 class chessBoard:
     def __init__(self):
-
-        alphanumboard = {}
-        for indi , i in enumerate(list("12345678")):
-            for indj, j in enumerate(list("abcdefgh")):
-                alphanumboard[j+i] = [indi,indj]
-        actualboard = [(['']*8)]*8
+        self.board = [[''for i in range(8)] for j in range(8)]
 
         for a in range(8):
             for b in range(8):
-                if a == 1 or a == 6:
-                    actualboard[a][b] = chessPiece(0, [a, b])
-                elif (b == 0 or b == 7) and (a == 0 or a == 7):
-                    actualboard[a][b] = chessPiece(3, [a, b])
-                elif (b == 1 or b == 6) and (a == 0 or a == 7):
-                    actualboard[a][b] = chessPiece(2, [a, b])
-                elif (b == 2 or b == 5) and (a == 0 or a == 7):
-                    actualboard[a][b] = chessPiece(1, [a, b])
-                elif (b == 3) and (a == 0 or a == 7):
-                    actualboard[a][b] = chessPiece(4, [a, b])
-                elif (b == 4) and (a == 0 or a == 7):
-                    actualboard[a][b] = chessPiece(5, [a, b])
-        print(actualboard)
+                if a == 1 or a == 6 :
+                    self.board[a][b] = chessPiece(0,[a,b])
+                elif a == 0 or a == 7 :
+                    if b == 0 or b == 7:
+                        self.board[a][b] = chessPiece(3, [a, b])
+                    elif b == 1 or b == 6:
+                        self.board[a][b] = chessPiece(2, [a, b])
+                    elif b == 2 or b == 5:
+                        self.board[a][b] = chessPiece(1, [a, b])
+                    elif b == 3:
+                        self.board[a][b] = chessPiece(4, [a, b])
+                    elif b == 4:
+                        self.board[a][b] = chessPiece(5, [a, b])
+        print(self.board)
+
 
 a = chessBoard()
-
